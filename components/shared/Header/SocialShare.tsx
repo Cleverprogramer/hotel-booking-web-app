@@ -28,8 +28,7 @@ const SocialsShare: FC<SocialsShareProps> = ({
         key={index}
         href={item.href}
         className={`rounded-full leading-none flex items-center justify-center bg-white text-neutral-6000 ${itemClass}`}
-        title={`Share on ${item.name}`}
-      >
+        title={`Share on ${item.name}`}>
         <i className={item.icon}></i>
       </a>
     );

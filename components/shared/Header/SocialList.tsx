@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { SocialType } from "./SocialsShare";
+import { SocialType } from "./SocialShare";
 
 export interface SocialsListProps {
   className?: string;

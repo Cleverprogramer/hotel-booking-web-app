@@ -7,9 +7,9 @@ import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import ButtonClose from "../../Button/ButtonClose";
 import { NavigationData } from "@/data/Navigation";
-import SocialsList from "../../SocialsList";
 import ButtonPrimary from "../../Button/ButtonPrimary";
 import SwitchDarkMode from "../../SwitchDarkMode";
+import SocialsList from "../SocialList";
 
 export interface NavMobileProps {
   data?: NavItemType[];
