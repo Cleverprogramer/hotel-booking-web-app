@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import SiteHeader from "@/components/shared/Header/Config";
+import Footer from "@/components/Footer/Footer";
 
 // 🔥 all css that we inject in our layout
 import "./globals.css";
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body className=" bg-white text-base dark:bg-neutral-900 text-neutral-900 dark:text-neutral-200">
         <SiteHeader />
         {children}
+        <Footer />
       </body>
     </html>
   );

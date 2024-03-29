@@ -1,10 +1,10 @@
-export interface SocialList {
+export interface FooterSocialListType {
   name: string;
   icon: string;
   href: string;
 }
 
-export interface SocialCustomLink {
+export interface FooterSocialListCustomLink {
   label: string;
   href: string;
   targetBlank?: boolean;
