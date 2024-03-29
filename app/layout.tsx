@@ -1,12 +1,22 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { Poppins } from "next/font/google";
+import SiteHeader from "@/components/shared/Header/Config";
 
-const inter = Inter({ subsets: ["latin"] });
+// 🔥 all css that we inject in our layout
+import "./globals.css";
+import "@/fonts/font-awesome/css/line-awesome.css";
+import "@/styles/index.scss";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "HBA - The best place you can find your awesome rooms.",
-  description: "The best place you can find your awesome rooms",
+  description:
+    "Discover the most outstanding hotels. Get quality bookings quickly.",
 };
 
 export default function RootLayout({
@@ -15,8 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={`${poppins.className}`}>
+      <body className=" bg-white text-base dark:bg-neutral-900 text-neutral-900 dark:text-neutral-200">
+        <SiteHeader />
+        {children}
+      </body>
     </html>
   );
 }
