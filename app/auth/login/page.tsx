@@ -1,8 +1,8 @@
 "use client";
 import React, { FC, useState } from "react";
-import facebookSvg from "@/Images/SVg/Facebook.svg";
-import twitterSvg from "@/Images/SVg/Twitter.svg";
-import googleSvg from "@/Images/SVg/Google.svg";
+import facebookSvg from "@/Images/Svg/Facebook.svg";
+import twitterSvg from "@/Images/Svg/Twitter.svg";
+import googleSvg from "@/Images/Svg/Google.svg";
 import Image from "next/image";
 import Link from "next/link";
 import Input from "@/components/shared/Input";
