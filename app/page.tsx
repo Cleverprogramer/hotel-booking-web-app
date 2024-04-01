@@ -1,7 +1,14 @@
-export default function Home() {
+import React from "react";
+import HomePageHeroSection from "@/components/Pages/Home/SectionHero";
+
+const HomePage = () => {
   return (
-    <>
-      <h2 className="text-xl text-center">Welcome Hotel booking web app</h2>
-    </>
+    <main className="nc-PageHome relative overflow-hidden">
+      <div className="container relative space-y-24 mb-24 lg:space-y-28 lg:mb-28">
+        <HomePageHeroSection className="" />
+      </div>
+    </main>
   );
-}
+};
+
+export default HomePage;
