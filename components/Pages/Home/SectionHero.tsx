@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import imagePng from "@/images/hero.png";
+import imagePng from "@/Images/hero.png";
 import Image from "next/image";
 import HeroSearchForm from "./HeroSearchForm/HeroSearchForm";
 
