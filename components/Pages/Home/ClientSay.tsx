@@ -28,21 +28,20 @@ const DEMO_DATA = [
     clientName: "Tiana Abie",
     clientAddress: "Malaysia",
     content:
-      "This place is exactly like the picture posted on Chisfis. Great service, we had a great stay!",
+      "We are an active couple in our early 70s. Hotel maansoor was an excellent, affordable choice for us during a 4 night stay!",
   },
   {
     id: 2,
     clientName: "Lennie Swiffan",
     clientAddress: "London",
     content:
-      "This place is exactly like the picture posted on Chisfis. Great service, we had a great stay!",
+      "Great Hotel, really pleasant and clean rooms, but the thing that makes this such a good place to stay are the staff!",
   },
   {
     id: 3,
     clientName: "Berta Emili",
     clientAddress: "Tokyo",
-    content:
-      "This place is exactly like the picture posted on Chisfis. Great service, we had a great stay!",
+    content: "This is a great hotel located very close to all the major sites!",
   },
 ];
 
