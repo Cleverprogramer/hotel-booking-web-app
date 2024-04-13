@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.text-11 {
+  font-size: 1.299rem /* 24px */;
+  line-height: 2rem /* 32px */;
+}

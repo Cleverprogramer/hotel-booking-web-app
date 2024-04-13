@@ -26,7 +26,7 @@ const HomePageHeroSection: FC<SectionHero2Props> = ({
             </h2>
           </div>
         </div>
-        <div className="hidden lg:block lg:mt-20 w-full">
+        <div className="hidden lg:block lg:-mt-5 w-full">
           <HeroSearchForm />
         </div>
       </div>

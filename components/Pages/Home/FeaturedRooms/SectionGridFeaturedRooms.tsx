@@ -18,18 +18,18 @@ const SectionGridFeaturedRooms: FC<SectionGridFeaturedRoomsProps> = ({
   gridClass = "2",
   heading = "Featured rooms to book",
   subHeading = "Popular rooms to stay that our hotel recommends for you",
-  tabs = ["Delux"],
+  tabs = ["Single", "Deluxe", "Twin", "Triple", "Vip"],
 }) => {
   return (
     <div className="nc-SectionGridFeaturePlaces relative">
       <HeaderFilter
-        tabActive={"Delux"}
+        tabActive={"Vip"}
         subHeading={subHeading}
         tabs={tabs}
         heading={heading}
       />
       <div
-        className={`grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ${gridClass}`}>
+        className={`grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 ${gridClass}`}>
         {data?.map((room) => (
           <FeaturedRoomsCard key={GenUuid()} data={room} />
         ))}

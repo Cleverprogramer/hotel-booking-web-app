@@ -31,7 +31,12 @@ const FeaturedRoomsCard: FC<FeaturedRoomsCardProps> = ({
           isLiked={true}
           className="absolute right-3 top-3 z-[1]"
         />
-        {data?.saleOff && <SaleOffBadge className="absolute left-3 top-3" />}
+        {data?.saleOff && (
+          <SaleOffBadge
+            desc={data?.saleOff}
+            className="absolute left-3 top-3"
+          />
+        )}
       </div>
     );
   };
@@ -39,12 +44,31 @@ const FeaturedRoomsCard: FC<FeaturedRoomsCardProps> = ({
   const renderContent = () => {
     return (
       <div className={size === "default" ? "mt-3 space-y-3" : "mt-2 space-y-2"}>
-        <div className="space-y-2">
-          <span className="text-sm text-neutral-500 dark:text-neutral-400">
-            {data?.categoryName} · {data?.bedrooms} beds
+        <div className="space-y-3">
+          <span className="text-sm text-neutral-500 dark:text-neutral-400 flex items-center gap-2">
+            <div className="flex items-center space-x-2">
+              <i className=" las la-bed text-2xl"></i>
+              <span className="hidden sm:inline-block">
+                {data?.bedrooms} beds
+              </span>
+            </div>
+            <span>·</span>
+            <div className="flex items-center space-x-3">
+              <i className=" las la-bath text-2xl"></i>
+              <span className=" ">
+                3 <span className="hidden sm:inline-block">baths</span>
+              </span>
+            </div>
+            <span>·</span>
+            <div className="flex items-center space-x-3">
+              <i className=" las la-expand-arrows-alt text-11"></i>
+              <span className=" ">
+                <span className="hidden sm:inline-block">26.30m2</span>
+              </span>
+            </div>
           </span>
           <div className="flex items-center space-x-2">
-            {false && <Badge name="ADS" color="green" />}
+            {true && <Badge name={data?.categoryName} color="green" />}
             <h2
               className={`font-semibold capitalize text-neutral-900 dark:text-white ${
                 size === "default" ? "text-base" : "text-base"
