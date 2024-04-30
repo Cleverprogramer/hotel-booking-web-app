@@ -14,6 +14,9 @@ dependencies:
   '@prisma/client':
     specifier: ^5.12.1
     version: 5.12.1(prisma@5.12.1)
+  '@react-typed-hooks/use-key-press':
+    specifier: ^1.0.5
+    version: 1.0.5
   '@tailwindcss/aspect-ratio':
     specifier: ^0.4.2
     version: 0.4.2(tailwindcss@3.4.3)
@@ -35,9 +38,6 @@ dependencies:
   next:
     specifier: 14.1.4
     version: 14.1.4(react-dom@18.2.0)(react@18.2.0)(sass@1.75.0)
-  prisma:
-    specifier: ^5.12.1
-    version: 5.12.1
   react:
     specifier: ^18
     version: 18.2.0
@@ -50,15 +50,27 @@ dependencies:
   react-hooks-global-state:
     specifier: ^2.1.0
     version: 2.1.0(react@18.2.0)
+  react-hot-toast:
+    specifier: ^2.4.1
+    version: 2.4.1(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0)
   react-swipeable:
     specifier: ^7.0.1
     version: 7.0.1(react@18.2.0)
+  react-use-keypress:
+    specifier: ^1.3.1
+    version: 1.3.1(react@18.2.0)
   sass:
     specifier: ^1.72.0
     version: 1.75.0
   uuid:
     specifier: ^9.0.1
     version: 9.0.1
+  zod:
+    specifier: ^3.23.4
+    version: 3.23.4
+  zustand:
+    specifier: ^4.5.2
+    version: 4.5.2(@types/react@18.2.79)(react@18.2.0)
 
 devDependencies:
   '@types/node':
@@ -82,6 +94,9 @@ devDependencies:
   postcss:
     specifier: ^8
     version: 8.4.38
+  prisma:
+    specifier: ^5.12.1
+    version: 5.12.1
   tailwindcss:
     specifier: ^3.3.0
     version: 3.4.3
@@ -392,11 +407,9 @@ packages:
 
   /@prisma/debug@5.12.1:
     resolution: {integrity: sha512-kd/wNsR0klrv79o1ITsbWxYyh4QWuBidvxsXSParPsYSu0ircUmNk3q4ojsgNc3/81b0ozg76iastOG43tbf8A==}
-    dev: false
 
   /@prisma/engines-version@5.12.0-21.473ed3124229e22d881cb7addf559799debae1ab:
     resolution: {integrity: sha512-6yvO8s80Tym61aB4QNtYZfWVmE3pwqe807jEtzm8C5VDe7nw8O1FGX3TXUaXmWV0fQTIAfRbeL2Gwrndabp/0g==}
-    dev: false
 
   /@prisma/engines@5.12.1:
     resolution: {integrity: sha512-HQDdglLw2bZR/TXD2Y+YfDMvi5Q8H+acbswqOsWyq9pPjBLYJ6gzM+ptlTU/AV6tl0XSZLU1/7F4qaWa8bqpJA==}
@@ -406,7 +419,6 @@ packages:
       '@prisma/engines-version': 5.12.0-21.473ed3124229e22d881cb7addf559799debae1ab
       '@prisma/fetch-engine': 5.12.1
       '@prisma/get-platform': 5.12.1
-    dev: false
 
   /@prisma/fetch-engine@5.12.1:
     resolution: {integrity: sha512-qSs3KcX1HKcea1A+hlJVK/ljj0PNIUHDxAayGMvgJBqmaN32P9tCidlKz1EGv6WoRFICYnk3Dd/YFLBwnFIozA==}
@@ -414,12 +426,20 @@ packages:
       '@prisma/debug': 5.12.1
       '@prisma/engines-version': 5.12.0-21.473ed3124229e22d881cb7addf559799debae1ab
       '@prisma/get-platform': 5.12.1
-    dev: false
 
   /@prisma/get-platform@5.12.1:
     resolution: {integrity: sha512-pgIR+pSvhYHiUcqXVEZS31NrFOTENC9yFUdEAcx7cdQBoZPmHVjtjN4Ss6NzVDMYPrKJJ51U14EhEoeuBlMioQ==}
     dependencies:
       '@prisma/debug': 5.12.1
+
+  /@react-typed-hooks/use-key-press@1.0.5:
+    resolution: {integrity: sha512-2z3atiQBNDNlEXHQFoojoGiJuukX6IxfqqLicQBTqOqmgmC6MVjTcyWu9fBadua991ah8+yUbSpAWqBB66q4fA==}
+    dependencies:
+      '@react-typed-hooks/utils': 1.0.5
+    dev: false
+
+  /@react-typed-hooks/utils@1.0.5:
+    resolution: {integrity: sha512-6mZXz2Roj6MBORq3CXox9nFp52wETDSthIlWHr5lXAJ7POUYC/uk03aJQyUcY8u1dZxwtw0e9TlA0tU9zIdB8A==}
     dev: false
 
   /@rushstack/eslint-patch@1.10.2:
@@ -1676,6 +1696,14 @@ packages:
       slash: 3.0.0
     dev: true
 
+  /goober@2.1.14(csstype@3.1.3):
+    resolution: {integrity: sha512-4UpC0NdGyAFqLNPnhCT2iHpza2q+RAY3GV85a/mRPdzyPQMsj0KmMMuetdIkzWRbJ+Hgau1EZztq8ImmiMGhsg==}
+    peerDependencies:
+      csstype: ^3.0.10
+    dependencies:
+      csstype: 3.1.3
+    dev: false
+
   /gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
     dependencies:
@@ -2453,7 +2481,6 @@ packages:
     requiresBuild: true
     dependencies:
       '@prisma/engines': 5.12.1
-    dev: false
 
   /prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
@@ -2506,6 +2533,20 @@ packages:
       - immer
     dev: false
 
+  /react-hot-toast@2.4.1(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-j8z+cQbWIM5LY37pR6uZR6D4LfseplqnuAO4co4u8917hBUvXlEqyP1ZzqVLcqoyUesZZv/ImreoCeHVDpE5pQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      goober: 2.1.14(csstype@3.1.3)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - csstype
+    dev: false
+
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -2525,6 +2566,15 @@ packages:
       react: ^16.8.3 || ^17 || ^18
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /react-use-keypress@1.3.1(react@18.2.0):
+    resolution: {integrity: sha512-fo+LQrxviMcZt7efCFPc6CX9/oNEPD+MJ/qSs4nK3/lyRNtquhG9f1J8GQq2VFfIYUVDUdPKz8fGIwErO1Pcuw==}
+    peerDependencies:
+      react: ^16.8.0 || 17 || 18
+    dependencies:
+      react: 18.2.0
+      tiny-invariant: 1.3.3
     dev: false
 
   /react@18.2.0:
@@ -2900,6 +2950,10 @@ packages:
     dependencies:
       any-promise: 1.3.0
 
+  /tiny-invariant@1.3.3:
+    resolution: {integrity: sha512-+FbBPE1o9QAYvviau/qC5SE3caw21q3xkvWKBtja5vgqOWIHHJ3ioaq1VPfn/Szqctz2bU/oYeKd9/z5BL+PVg==}
+    dev: false
+
   /to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
@@ -3129,6 +3183,10 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /zod@3.23.4:
+    resolution: {integrity: sha512-/AtWOKbBgjzEYYQRNfoGKHObgfAZag6qUJX1VbHo2PRBgS+wfWagEY2mizjfyAPcGesrJOcx/wcl0L9WnVrHFw==}
+    dev: false
+
   /zustand@4.0.0(react@18.2.0):
     resolution: {integrity: sha512-OrsfQTnRXF1LZ9/vR/IqN9ws5EXUhb149xmPjErZnUrkgxS/gAHGy2dPNIVkVvoxrVe1sIydn4JjF0dYHmGeeQ==}
     engines: {node: '>=12.7.0'}
@@ -3141,6 +3199,26 @@ packages:
       react:
         optional: true
     dependencies:
+      react: 18.2.0
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
+  /zustand@4.5.2(@types/react@18.2.79)(react@18.2.0):
+    resolution: {integrity: sha512-2cN1tPkDVkwCy5ickKrI7vijSjPksFRfqS6237NzT0vqSsztTNnQdHw9mmN7uBdk3gceVXU0a+21jFzFzAc9+g==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      '@types/react': '>=16.8'
+      immer: '>=9.0.6'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      '@types/react': 18.2.79
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
