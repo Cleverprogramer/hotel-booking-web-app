@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import SiteHeader from "@/components/shared/Header/Config";
 import Footer from "@/components/shared/Footer/Footer";
+import { Toaster } from "react-hot-toast";
 
 // 🔥 all css that we inject in our layout
 import "./globals.css";
@@ -31,6 +32,7 @@ export default function RootLayout({
         <SiteHeader />
         {children}
         <Footer />
+        <Toaster />
       </body>
     </html>
   );
