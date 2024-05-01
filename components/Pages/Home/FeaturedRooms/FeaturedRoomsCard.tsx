@@ -56,19 +56,22 @@ const FeaturedRoomsCard: FC<FeaturedRoomsCardProps> = ({
             <div className="flex items-center space-x-3">
               <i className=" las la-bath text-2xl"></i>
               <span className=" ">
-                3 <span className="hidden sm:inline-block">baths</span>
+                {data?.baths}{" "}
+                <span className="hidden sm:inline-block">baths</span>
               </span>
             </div>
             <span>·</span>
             <div className="flex items-center space-x-3">
               <i className=" las la-expand-arrows-alt text-11"></i>
               <span className=" ">
-                <span className="hidden sm:inline-block">26.30m2</span>
+                <span className="hidden sm:inline-block">
+                  {data?.sizeInMeter}m2
+                </span>
               </span>
             </div>
           </span>
           <div className="flex items-center space-x-2">
-            {true && <Badge name={data?.categoryName} color="green" />}
+            {true && <Badge name={data?.RoomCategory?.name} color="green" />}
             <h2
               className={`font-semibold capitalize text-neutral-900 dark:text-white ${
                 size === "default" ? "text-base" : "text-base"
@@ -88,9 +91,7 @@ const FeaturedRoomsCard: FC<FeaturedRoomsCardProps> = ({
               </span>
             )}
           </span>
-          {!!data?.reviews && (
-            <StartRating reviewCount={0} point={data.reviews} />
-          )}
+          {!!data?.reviews && <StartRating point={data.reviews} />}
         </div>
       </div>
     );

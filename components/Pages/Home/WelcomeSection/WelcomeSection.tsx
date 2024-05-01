@@ -23,8 +23,8 @@ const WelcomeSection: FC<WelcomeSectionProps> = ({
 }) => {
   return (
     <div className={`nc-SectionHero relative ${className}`}>
-      <div className="flex flex-col lg:flex-row space-y-14 lg:space-y-0 lg:space-x-10 items-center relative text-center lg:text-left">
-        {/* <div className="w-screen max-w-full xl:max-w-lg space-y-5 lg:space-y-7">
+      <div className="flex flex-col justify-between lg:flex-row space-y-14 lg:space-y-0 lg:space-x-10 items-center relative text-center lg:text-left">
+        <div className="w-screen max-w-full xl:max-w-lg space-y-5 lg:space-y-7">
           <h2 className="text-3xl !leading-tight font-semibold text-neutral-900 md:text-4xl xl:text-5xl dark:text-neutral-100">
             {heading}
           </h2>
@@ -32,18 +32,20 @@ const WelcomeSection: FC<WelcomeSectionProps> = ({
             {subHeading}
           </span>
           {!!btnText && <ButtonPrimary href={href}>{btnText}</ButtonPrimary>}
-        </div> */}
-        <div className={`nc-StayCard2 group relative ${className}`}>
+        </div>
+        <div
+          className={`nc-StayCard2 group relative w-full h-[25rem] ${className}`}>
           <WelcomeGallerySlider
             uniqueID={`StayCard_${GenUuid()}`}
-            ratioClass=" "
+            ratioClass="rounded"
+            className="rounded-xl"
             galleryImgs={[
-              "https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=600",
-              "https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=600",
+              "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=600",
+              "https://images.pexels.com/photos/2082087/pexels-photo-2082087.jpeg?auto=compress&cs=tinysrgb&w=600",
+              "https://images.pexels.com/photos/2062431/pexels-photo-2062431.jpeg?auto=compress&cs=tinysrgb&w=600",
+              "https://images.pexels.com/photos/1879061/pexels-photo-1879061.jpeg?auto=compress&cs=tinysrgb&w=600",
             ]}
-            href={`/rooms/`}
           />
-          ldlldlddllddl
         </div>
       </div>
     </div>

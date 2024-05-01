@@ -8,6 +8,7 @@ import { GuestsObject } from "@/types/Guest";
 import ClearButton from "@/components/shared/Button/ClearButton";
 import ButtonSubmit from "@/components/shared/Button/SubmitButton";
 import NcInputNumber from "./NcInputNumber";
+import { useDateStore } from "@/hooks/useStore";
 
 export interface GuestsInputProps {
   fieldClassName?: string;
@@ -20,11 +21,13 @@ const GuestsInput: FC<GuestsInputProps> = ({
   fieldClassName = "[ nc-hero-field-padding ]",
   className = "[ nc-flex-1 ]",
   buttonSubmitHref = "/",
-  hasButtonSubmit = true,
+  hasButtonSubmit = false,
 }) => {
-  const [guestAdultsInputValue, setGuestAdultsInputValue] = useState(2);
-  const [guestChildrenInputValue, setGuestChildrenInputValue] = useState(1);
-  const [guestInfantsInputValue, setGuestInfantsInputValue] = useState(1);
+  const Setguests = useDateStore((state) => state.SetGuests);
+
+  const [guestAdultsInputValue, setGuestAdultsInputValue] = useState(0);
+  const [guestChildrenInputValue, setGuestChildrenInputValue] = useState(0);
+  const [guestInfantsInputValue, setGuestInfantsInputValue] = useState(0);
 
   const handleChangeData = (value: number, type: keyof GuestsObject) => {
     let newValue = {
@@ -44,11 +47,15 @@ const GuestsInput: FC<GuestsInputProps> = ({
       setGuestInfantsInputValue(value);
       newValue.guestInfants = value;
     }
+    const total =
+      newValue.guestAdults + newValue.guestChildren + newValue.guestInfants;
+    Setguests(total);
   };
 
   const totalGuests =
     guestChildrenInputValue + guestAdultsInputValue + guestInfantsInputValue;
 
+  // Setguests(totalGuests);
   return (
     <Popover className={`flex relative ${className}`}>
       {({ open }) => (

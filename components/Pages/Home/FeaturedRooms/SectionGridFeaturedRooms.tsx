@@ -18,7 +18,7 @@ const SectionGridFeaturedRooms: FC<SectionGridFeaturedRoomsProps> = ({
   gridClass = "2",
   heading = "Featured rooms to book",
   subHeading = "Popular rooms to stay that our hotel recommends for you",
-  tabs = ["Single", "Deluxe", "Twin", "Triple", "Vip"],
+  tabs = ["Single", "Deluxe", "Triple", "Vip"],
 }) => {
   return (
     <div className="nc-SectionGridFeaturePlaces relative">
