@@ -1,14 +1,22 @@
 import { AuthorType } from "./Author";
 
 export interface RoomsDataType {
-  id: number;
+  id: string;
   name: string;
   desc: string;
-  categoryName: string;
   featuredImage: string;
   galleryImages: string[];
   price: number;
   bedrooms: number;
+  baths: number;
+  guests: number;
+  stayInfo: string;
   saleOff: string;
   reviews: number;
+  sizeInMeter: string;
+  RoomCategory: {
+    id: string;
+    name: string;
+  };
+  roomCategoryId: any;
 }
