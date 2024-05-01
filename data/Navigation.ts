@@ -2,7 +2,6 @@ import { NavItemType } from "@/components/shared/Header/Navigation/NavigationIte
 import { GenUuid } from "@/utils/Uuid";
 
 const OtherPages: NavItemType[] = [
-  { id: GenUuid(), href: "/contact", name: "Contact us" },
   { id: GenUuid(), href: "/auth/login", name: "Login" },
   { id: GenUuid(), href: "/auth/signup", name: "Signup" },
 ];
@@ -16,14 +15,14 @@ export const NavigationData: NavItemType[] = [
   },
   {
     id: GenUuid(),
-    href: "/rooms",
-    name: "Rooms",
+    href: "/about",
+    name: "About Us",
     type: "none",
   },
   {
     id: GenUuid(),
-    href: "/about",
-    name: "About Us",
+    href: "/contact",
+    name: "Contact",
     type: "none",
   },
   {
