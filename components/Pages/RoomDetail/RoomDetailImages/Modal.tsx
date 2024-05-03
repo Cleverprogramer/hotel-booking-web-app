@@ -4,7 +4,6 @@ import { Dialog } from "@headlessui/react";
 import { motion } from "framer-motion";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useRef, useState } from "react";
-import useKeypress from "react-use-keypress";
 import SharedModal from "./SharedModal";
 import { Route } from "next";
 import { getNewParam } from "./ListImageGallery";
@@ -39,18 +38,6 @@ export default function Modal({
     setCurIndex(newVal);
     router.push(`${thisPathname}?${getNewParam({ value: newVal })}` as Route);
   }
-
-  useKeypress("ArrowRight", () => {
-    if (index + 1 < images.length) {
-      changePhotoId(index + 1);
-    }
-  });
-
-  useKeypress("ArrowLeft", () => {
-    if (index > 0) {
-      changePhotoId(index - 1);
-    }
-  });
 
   return (
     <>
