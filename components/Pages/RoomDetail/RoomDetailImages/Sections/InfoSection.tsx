@@ -17,7 +17,7 @@ interface InfoSectionProps {
   guests: number;
   // saleOff: string;
   reviews: number;
-  sizeInMeter: string;
+  sizeInMeter: number;
   RoomCategory: {
     id: string;
     name: string;

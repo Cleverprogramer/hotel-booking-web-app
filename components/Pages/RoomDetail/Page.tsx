@@ -122,6 +122,7 @@ const RoomDetailPageComponent = ({ data, children }: IRoomComponents) => {
           <SectionAmentities
             desc="About the room's amenities and services"
             isOpen={false}
+            number={6}
             title="Room Facilities"
           />
           <ThingsToKnow />
