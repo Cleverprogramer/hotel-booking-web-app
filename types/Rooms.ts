@@ -13,10 +13,10 @@ export interface RoomsDataType {
   stayInfo: string;
   saleOff: string;
   reviews: number;
-  sizeInMeter: string;
+  sizeInMeter: number;
   RoomCategory: {
     id: string;
     name: string;
   };
-  roomCategoryId: any;
+  roomCategoryId: string;
 }
