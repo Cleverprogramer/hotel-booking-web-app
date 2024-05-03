@@ -18,7 +18,9 @@ export const DateFormating = ({ CheckIn, CheckOut }: IDateFormating) => {
   const CheckInDate: any = `${CheckingMonth}/${CheckingDay}/${CheckingYear}`;
   const CheckOutDate: any = `${CheckOutMonth}/${CheckOutDay}/${CheckOutYear}`;
 
-  const diff: any = Math.abs(new Date(CheckOutDate) - new Date(CheckInDate));
+  const diff: any = Math.abs(
+    new Date(CheckOutDate).valueOf() - new Date(CheckInDate).valueOf()
+  );
   const dayscount = Math.ceil(diff / (1000 * 60 * 60 * 24));
 
   return dayscount;
