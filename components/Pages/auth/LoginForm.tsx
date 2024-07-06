@@ -10,14 +10,36 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { LoginSchema } from "@/schema/Login";
+import { useMutation } from "@tanstack/react-query";
+import { LoginUser } from "@/server/auth/login";
+import toast from "react-hot-toast";
 
 const LoginForm = () => {
-  const { register, handleSubmit } = useForm<z.infer<typeof LoginSchema>>({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
   });
 
+  const { isPending, mutate } = useMutation({
+    mutationKey: ["login the user"],
+    mutationFn: async (data: z.infer<typeof LoginSchema>) => {
+      return LoginUser(data);
+    },
+    onError(error, variables, context) {
+      toast.error(error.message as string);
+    },
+    onSuccess(data, variables, context) {
+      reset();
+      toast.success(data.success as string);
+    },
+  });
+
   function onSubmit(values: z.infer<typeof LoginSchema>) {
-    console.log(values);
+    mutate(values);
   }
 
   return (
@@ -45,7 +67,9 @@ const LoginForm = () => {
           </span>
           <Input type="password" className="mt-1" {...register("password")} />
         </label>
-        <ButtonPrimary type="submit">Continue</ButtonPrimary>
+        <ButtonPrimary loading={isPending} type="submit">
+          Continue
+        </ButtonPrimary>
       </form>
     </div>
   );
