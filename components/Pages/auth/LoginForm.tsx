@@ -27,14 +27,15 @@ const LoginForm = () => {
   const { isPending, mutate } = useMutation({
     mutationKey: ["login the user"],
     mutationFn: async (data: z.infer<typeof LoginSchema>) => {
-      return LoginUser(data);
+      const user = await LoginUser(data);
+      if (user?.error) throw new Error(user.error);
     },
     onError(error, variables, context) {
       toast.error(error.message as string);
     },
     onSuccess(data, variables, context) {
       reset();
-      toast.success(data.success as string);
+      // toast.success(data?.success as string);
     },
   });
 
@@ -57,6 +58,11 @@ const LoginForm = () => {
             placeholder="example@example.com"
             className="mt-1"
           />
+          {errors.email && (
+            <span className="text-red-500 dark:text-red-400">
+              {errors.email.message}
+            </span>
+          )}
         </label>
         <label className="block">
           <span className="flex justify-between items-center text-neutral-800 dark:text-neutral-200">
@@ -66,6 +72,11 @@ const LoginForm = () => {
             </Link>
           </span>
           <Input type="password" className="mt-1" {...register("password")} />
+          {errors.password && (
+            <span className="text-red-500 dark:text-red-400">
+              {errors.password.message}
+            </span>
+          )}
         </label>
         <ButtonPrimary loading={isPending} type="submit">
           Continue

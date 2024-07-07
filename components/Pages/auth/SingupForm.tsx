@@ -26,14 +26,16 @@ const SingupForm = () => {
   const { isPending, mutate } = useMutation({
     mutationKey: ["login the user"],
     mutationFn: async (data: z.infer<typeof SingupSchema>) => {
-      return SingupUser(data);
+      const user = await SingupUser(data);
+      if (user.error) throw new Error(user.error);
+      if (user.success) return { success: user.success };
     },
     onError(error, variables, context) {
       toast.error(error.message as string);
     },
     onSuccess(data, variables, context) {
       reset();
-      toast.success(data.success as string);
+      toast.success(data?.success as string);
     },
   });
 
@@ -55,12 +57,22 @@ const SingupForm = () => {
             placeholder="example@example.com"
             className="mt-1"
           />
+          {errors.email && (
+            <span className="text-red-500 dark:text-red-400">
+              {errors.email.message}
+            </span>
+          )}
         </label>
         <label className="block">
           <span className="flex justify-between items-center text-neutral-800 dark:text-neutral-200">
             Password
           </span>
           <Input type="password" {...register("password")} className="mt-1" />
+          {errors.password && (
+            <span className="text-red-500 dark:text-red-400">
+              {errors.password.message}
+            </span>
+          )}
         </label>
         <ButtonPrimary loading={isPending} type="submit">
           Continue
