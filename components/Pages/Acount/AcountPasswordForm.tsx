@@ -81,6 +81,7 @@ const AcountPasswordForm = () => {
             type="password"
             className="mt-1.5"
             disabled={isPending}
+            autoComplete="off"
             {...register("newPassword")}
           />
           {errors.newPassword && (
@@ -93,6 +94,7 @@ const AcountPasswordForm = () => {
           <Label>Confirm password</Label>
           <Input
             type="password"
+            autoComplete="off"
             className="mt-1.5"
             disabled={isPending}
             {...register("confirmPassword")}

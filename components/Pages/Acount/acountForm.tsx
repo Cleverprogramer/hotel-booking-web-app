@@ -110,6 +110,7 @@ const AcountForm = ({ user }: { user: IUser }) => {
             <Input
               className="mt-1.5"
               disabled={isPending}
+              autoComplete="off"
               {...register("name")}
             />
             {errors.name && (
@@ -149,6 +150,7 @@ const AcountForm = ({ user }: { user: IUser }) => {
             <Input
               className="mt-1.5"
               disabled={isPending}
+              autoComplete="off"
               {...register("username")}
             />
             {errors.username && (
@@ -160,7 +162,12 @@ const AcountForm = ({ user }: { user: IUser }) => {
           {/* ---- */}
           <div>
             <Label>Email</Label>
-            <Input className="mt-1.5" disabled {...register("email")} />
+            <Input
+              className="mt-1.5"
+              disabled
+              autoComplete="off"
+              {...register("email")}
+            />
             {errors.email && (
               <span className="text-red-500 dark:text-red-400">
                 {errors.email.message}
@@ -174,6 +181,7 @@ const AcountForm = ({ user }: { user: IUser }) => {
               className="mt-1.5"
               type="date"
               disabled={isPending}
+              autoComplete="off"
               {...register("dateOfBrith")}
             />
             {errors.dateOfBrith && (
@@ -188,6 +196,7 @@ const AcountForm = ({ user }: { user: IUser }) => {
             <Input
               className="mt-1.5"
               disabled={isPending}
+              autoComplete="off"
               {...register("address")}
             />
             {errors.address && (
@@ -202,6 +211,7 @@ const AcountForm = ({ user }: { user: IUser }) => {
             <Input
               className="mt-1.5"
               disabled={isPending}
+              autoComplete="off"
               {...register("phoneNumber")}
             />
             {errors.phoneNumber && (
@@ -216,6 +226,7 @@ const AcountForm = ({ user }: { user: IUser }) => {
             <Textarea
               className="mt-1.5"
               disabled={isPending}
+              autoComplete="off"
               {...register("aboutYou")}
             />
             {errors.aboutYou && (
