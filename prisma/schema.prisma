@@ -42,6 +42,7 @@ model User {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   reviews   reviews[]
+  Booking   Booking[]
 }
 
 model Account {
@@ -82,6 +83,7 @@ model Rooms {
   RoomCategory   RoomCategory @relation(fields: [roomCategoryId], references: [id])
   roomCategoryId String
   review         reviews[]
+  Booking        Booking[]
 }
 
 model RoomCategory {
@@ -102,4 +104,19 @@ model reviews {
   roomsId     String
   user        User     @relation(fields: [userId], references: [id])
   userId      String
+}
+
+model Booking {
+  id        String   @id @default(cuid())
+  guests    Int
+  nights    Int
+  checking  String
+  checkout  String
+  price     Float
+  room      Rooms    @relation(fields: [roomsId], references: [id])
+  roomsId   String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
