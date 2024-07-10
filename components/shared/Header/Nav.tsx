@@ -4,12 +4,16 @@ import ButtonPrimary from "@/components/shared/Button/ButtonPrimary";
 import Navigation from "./Navigation/Navigation";
 import MenuBar from "./MobileMenu";
 import SwitchDarkMode from "../SwitchDarkMode";
+import UserButton from "@/components/Pages/auth/UserButton";
+import { useCurrentUser } from "@/hooks/auth/client/useCurrentUser";
 
 export interface MainNav1Props {
   className?: string;
 }
 
 const Nav: FC<MainNav1Props> = ({ className = "" }) => {
+  const user = useCurrentUser();
+
   return (
     <div className={`nc-MainNav1 relative z-10 ${className}`}>
       <div className="px-4 lg:container h-20 relative flex justify-between">
@@ -33,9 +37,14 @@ const Nav: FC<MainNav1Props> = ({ className = "" }) => {
             <SwitchDarkMode />
             {/* <SearchDropdown className="flex items-center" /> */}
             <div className="px-1" />
-            <ButtonPrimary className="self-center" href="/auth/signup">
-              Sign up
-            </ButtonPrimary>
+
+            {user?.email ? (
+              <UserButton />
+            ) : (
+              <ButtonPrimary className="self-center" href="/auth/signup">
+                Sign up
+              </ButtonPrimary>
+            )}
           </div>
         </div>
       </div>
