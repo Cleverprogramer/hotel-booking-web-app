@@ -13,17 +13,35 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Gender {
+  female
+  male
+}
+
+enum Role {
+  user
+  admin
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
+  gender        Gender?
+  username      String?
+  address       String?
+  dateOfBrith   String?
+  phoneNumber   String?
+  aboutYou      String?
   email         String    @unique
   password      String?
   emailVerified DateTime?
   image         String?
+  role          Role      @default(user)
   accounts      Account[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  reviews   reviews[]
 }
 
 model Account {
@@ -82,4 +100,6 @@ model reviews {
   updatedAt   DateTime @updatedAt
   Rooms       Rooms    @relation(fields: [roomsId], references: [id])
   roomsId     String
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
 }
