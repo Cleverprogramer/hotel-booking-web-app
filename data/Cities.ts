@@ -1,0 +1,16 @@
+export const SomalilandCities = [
+  "Hargeisa",
+  "Hargeysa",
+  "Berbera",
+  "Berbera",
+  "Burao",
+  "Burco",
+  "Erigavo",
+  "Ceerigaabo",
+  "Gabiiley",
+  "Gabiley",
+  "Tog Wajaale",
+  "Wajaale",
+  "Las Anod",
+  "Laas Caanood",
+].map((city) => city.toLowerCase());
