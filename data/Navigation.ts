@@ -6,6 +6,29 @@ const OtherPages: NavItemType[] = [
   { id: GenUuid(), href: "/auth/signup", name: "Signup" },
 ];
 
+export const DashboardNavItems = [
+  {
+    id: GenUuid(),
+    href: "/dashboard/acount",
+    name: "Acount",
+  },
+  {
+    id: GenUuid(),
+    href: "/dashboard/acount/savelist",
+    name: "Account Savelists",
+  },
+  {
+    id: GenUuid(),
+    href: "/dashboard/acount/password",
+    name: "Account Password",
+  },
+  {
+    id: GenUuid(),
+    href: "/dashboard/acount/billing",
+    name: "Account Billing",
+  },
+];
+
 export const NavigationData: NavItemType[] = [
   {
     id: GenUuid(),
