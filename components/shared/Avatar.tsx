@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import avatar1 from "@/Images/avatars/Image-1.png";
 import Image, { StaticImageData } from "next/image";
+import { avatarColors } from "@/utils/AvatarColors";
 
 export interface AvatarProps {
   containerClassName?: string;
@@ -16,12 +17,12 @@ const Avatar: FC<AvatarProps> = ({
   containerClassName = "ring-1 ring-white dark:ring-neutral-900",
   sizeClass = "h-6 w-6 text-sm",
   radius = "rounded-full",
-  imgUrl = avatar1,
+  imgUrl,
   userName,
   hasChecked,
   hasCheckedClass = "w-4 h-4 -top-0.5 -right-0.5",
 }) => {
-  const url = imgUrl || "";
+  const url = imgUrl;
   const name = userName || "John Doe";
   const _setBgColor = (name: string) => {
     const backgroundIndex = Math.floor(
@@ -39,6 +40,8 @@ const Avatar: FC<AvatarProps> = ({
           className={`absolute inset-0 w-full h-full object-cover ${radius}`}
           src={url}
           alt={name}
+          width={100}
+          height={100}
         />
       )}
       <span className="wil-avatar__name">{name[0]}</span>
