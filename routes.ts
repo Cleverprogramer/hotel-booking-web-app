@@ -36,4 +36,9 @@ export const ApiAuthPrefix = "/api/auth";
 
 export const DefaultRedirectUrl = "/dashboard/acount";
 
-export const PrivateRoutes = ["/dashboard/acount", "/dashboard/updatepassword"];
+export const PrivateRoutes = [
+  "/dashboard/acount",
+  "/dashboard/acount/password",
+  "/dashboard/acount/billing",
+  "/dashboard/acount/savelist",
+];
