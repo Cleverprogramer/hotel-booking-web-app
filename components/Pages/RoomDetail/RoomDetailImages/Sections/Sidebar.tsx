@@ -8,7 +8,10 @@ import { useDateStore } from "@/hooks/useStore";
 import { DateFormating } from "@/utils/DateFormating";
 import { useCustomerNight } from "@/hooks/UseCustomerNight";
 import SidebarBookButton from "./SidebarComponents/SidebarBookButton";
-import { CreateBooking } from "@/server/CreateBooking";
+import { CreateBookingAction } from "@/server/CreateBooking";
+import { usePathname } from "next/navigation";
+import { IBooking } from "@/types/Booking";
+import toast from "react-hot-toast";
 
 const Sidebar = ({
   price,
@@ -19,6 +22,8 @@ const Sidebar = ({
   price: number;
   reviews: number;
 }) => {
+  const pathname = usePathname();
+
   const SetCustomerNight = useCustomerNight((state) => state.SetCustomerNight);
   const CustomerNight = useCustomerNight((state) => state.CustomerNight);
   const CheckIn: string = useDateStore((state) => state.CheckIn);
@@ -30,6 +35,18 @@ const Sidebar = ({
     SetCustomerNight(Days);
   }
 
+  const CreateBookingaction = async (formdata: IBooking) => {
+    const CreateReviewUpdated = CreateBookingAction.bind(null);
+    const result = await CreateReviewUpdated(formdata);
+
+    if (result?.error) {
+      toast.error(result.error as string);
+      return;
+    }
+    if (result?.success) {
+      toast.success(result.success);
+    }
+  };
   return (
     <div className="listingSectionSidebar__wrap shadow-xl">
       <div className="flex justify-between">
@@ -71,12 +88,13 @@ const Sidebar = ({
       {/* SUBMIT */}
       <form
         action={() =>
-          CreateBooking({
+          CreateBookingaction({
             checking: CheckIn,
             checkout: CheckOut,
             guests,
             nights,
             price,
+            roomId: pathname.split("/rooms/")[1],
           })
         }>
         <SidebarBookButton />
