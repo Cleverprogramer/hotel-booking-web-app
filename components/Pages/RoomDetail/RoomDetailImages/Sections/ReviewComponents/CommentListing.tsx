@@ -1,8 +1,10 @@
 import Avatar from "@/components/shared/Avatar";
+import { IUser } from "@/types/User";
 import { StarIcon } from "@heroicons/react/24/solid";
 import React, { FC } from "react";
 
 interface CommentListingDataType {
+  user: any;
   username: string;
   avatar?: string;
   createdAt: Date;
@@ -29,15 +31,15 @@ const CommentListing: FC<CommentListingProps> = ({
         <Avatar
           sizeClass="h-10 w-10 text-lg"
           radius="rounded-full"
-          userName={data.username}
-          // imgUrl={data.avatar}
+          userName={!data.user.image ? data.username : ""}
+          imgUrl={!data.user.image ? "" : data.user.image}
         />
       </div>
       <div className="flex-grow">
         <div className="flex justify-between space-x-3">
           <div className="flex flex-col">
             <div className="text-sm font-semibold">
-              <span>{data.username}</span>
+              <span>{data.user.name}</span>
               {hasListingTitle && (
                 <>
                   <span className="text-neutral-500 dark:text-neutral-400 font-normal">

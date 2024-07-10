@@ -1,5 +1,6 @@
 "use server";
 
+import { useCurrentUser } from "@/hooks/auth/server/useCurrentUser";
 import { ReviewSchema } from "@/schema/CreateReview";
 import prisma from "@/utils/db";
 
@@ -12,9 +13,18 @@ export const CreateReview = async (
   data: FormData
 ) => {
   try {
+    const session = await useCurrentUser();
     const Data = data?.get("comment");
     const comment = { comment: Data };
     const ValidatingComment = ReviewSchema.safeParse(comment);
+
+    if (!session?.email) {
+      return { error: "unAuthorized please login first!" };
+    }
+
+    if (!session.image) {
+      return { error: "please complete your profile!" };
+    }
 
     if (ValidatingComment.success === false) {
       return { error: "Please add your review!" };
@@ -27,8 +37,9 @@ export const CreateReview = async (
       data: {
         comment: ValidatingComment.data.comment,
         ratingCount: reviewNumber,
-        username: "programmer",
+        username: session.username,
         roomsId: RoomId,
+        userId: session.id as string,
       },
     });
     return { data: Review };

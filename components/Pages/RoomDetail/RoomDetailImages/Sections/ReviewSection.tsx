@@ -1,7 +1,4 @@
 "use client";
-import ButtonCircle from "@/components/shared/Button/ButtonCircle";
-import Input from "@/components/shared/Input";
-import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import React from "react";
 import FiveStartIconForReview from "./ReviewComponents/FiveStartIconReview";
 import { CreateReview } from "@/server/CreateReview";
@@ -15,7 +12,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 interface IReviews {
-  data: IComments[];
+  data: IComments[] | any;
   RoomId: string;
 }
 
@@ -31,7 +28,13 @@ const ReviewSection = ({ data, RoomId }: IReviews) => {
     const result = await CreateReviewUpdated(formdata);
 
     if (result?.error) {
-      return toast.error(result.error as string);
+      if (result.error === "please complete your profile!") {
+        toast.error(result.error as string);
+        router.push("/dashboard/acount");
+        return;
+      }
+      toast.error(result.error as string);
+      return;
     }
     if (result?.data) {
       toast.success("Review created successfully!");
@@ -55,7 +58,7 @@ const ReviewSection = ({ data, RoomId }: IReviews) => {
         </div>
       </div>
       <div className="divide-y divide-neutral-100 dark:divide-neutral-800">
-        {data.map((comment) => (
+        {data.map((comment: any) => (
           <CommentListing key={GenUuid()} data={comment} className="py-8" />
         ))}
       </div>
