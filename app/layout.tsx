@@ -10,6 +10,8 @@ import ReactQueryProvider from "@/providers/reactquery";
 import "./globals.css";
 import "@/fonts/font-awesome/css/line-awesome.css";
 import "@/styles/index.scss";
+import { SessionProvider } from "next-auth/react";
+import { auth } from "@/auth";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -23,20 +25,23 @@ export const metadata: Metadata = {
     "Discover the most outstanding hotels. Get quality bookings quickly.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
   return (
     <html lang="en" className={`${poppins.className}`}>
       <body className=" bg-white text-base dark:bg-neutral-900 text-neutral-900 dark:text-neutral-200">
-        <ReactQueryProvider>
-          <SiteHeader />
-          {children}
-          <Footer />
-          <Toaster />
-        </ReactQueryProvider>
+        <SessionProvider session={session}>
+          <ReactQueryProvider>
+            <SiteHeader />
+            {children}
+            <Footer />
+            <Toaster />
+          </ReactQueryProvider>
+        </SessionProvider>
       </body>
     </html>
   );
