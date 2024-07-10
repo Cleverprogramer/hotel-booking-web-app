@@ -2,6 +2,7 @@ export interface IBooking {
   nights: number;
   price: number;
   guests: number;
-  checking: string | any;
+  checking: string;
   checkout: string;
+  roomId: string;
 }
