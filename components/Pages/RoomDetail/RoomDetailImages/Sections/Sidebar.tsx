@@ -8,7 +8,6 @@ import { useDateStore } from "@/hooks/useStore";
 import { DateFormating } from "@/utils/DateFormating";
 import { useCustomerNight } from "@/hooks/UseCustomerNight";
 import SidebarBookButton from "./SidebarComponents/SidebarBookButton";
-import { CreateBookingAction } from "@/server/CreateBooking";
 import { usePathname, useRouter } from "next/navigation";
 import { IBooking } from "@/types/Booking";
 import toast from "react-hot-toast";
@@ -97,8 +96,8 @@ const Sidebar = ({
             checkout: CheckOut,
             guests,
             nights,
-            price : Math.trunc(price * nights),
-            
+            price: Math.trunc(price * nights),
+
             roomId: pathname.split("/rooms/")[1],
           })
         }>
