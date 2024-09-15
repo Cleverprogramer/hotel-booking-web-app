@@ -7,7 +7,6 @@ export interface RoomsDataType {
   desc: string;
   featuredImage: string;
   galleryImages: string[];
-  rooms: Rooms;
   price: number;
   bedrooms: number;
   baths: number;
