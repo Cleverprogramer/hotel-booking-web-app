@@ -9,9 +9,10 @@ import { DateFormating } from "@/utils/DateFormating";
 import { useCustomerNight } from "@/hooks/UseCustomerNight";
 import SidebarBookButton from "./SidebarComponents/SidebarBookButton";
 import { CreateBookingAction } from "@/server/CreateBooking";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { IBooking } from "@/types/Booking";
 import toast from "react-hot-toast";
+import { CreatePayment } from "@/server/CreateCheckout";
 
 const Sidebar = ({
   price,
@@ -22,6 +23,7 @@ const Sidebar = ({
   price: number;
   reviews: number;
 }) => {
+  const router = useRouter();
   const pathname = usePathname();
 
   const SetCustomerNight = useCustomerNight((state) => state.SetCustomerNight);
@@ -36,15 +38,17 @@ const Sidebar = ({
   }
 
   const CreateBookingaction = async (formdata: IBooking) => {
-    const CreateReviewUpdated = CreateBookingAction.bind(null);
+    const CreateReviewUpdated = CreatePayment.bind(null);
     const result = await CreateReviewUpdated(formdata);
 
     if (result?.error) {
       toast.error(result.error as string);
       return;
     }
-    if (result?.success) {
-      toast.success(result.success);
+    if (result?.url) {
+      router.push(result.url);
+    } else {
+      toast.error("Unable to retrieve payment URL.");
     }
   };
   return (
@@ -93,7 +97,8 @@ const Sidebar = ({
             checkout: CheckOut,
             guests,
             nights,
-            price,
+            price : Math.trunc(price * nights),
+            
             roomId: pathname.split("/rooms/")[1],
           })
         }>
