@@ -4,7 +4,7 @@ import { useCurrentUser } from "@/hooks/auth/server/useCurrentUser";
 
 const AccountSavelists = async () => {
   const session = await useCurrentUser();
-  const data = await prisma.booking.findMany({
+  const data:any = await prisma.booking.findMany({
     where: { userId: session?.id as string },
     include: { room: true },
   });
