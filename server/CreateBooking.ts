@@ -6,6 +6,7 @@ import { useCurrentUser } from "@/hooks/auth/server/useCurrentUser";
 import { BookingSchema } from "@/schema/Booking";
 import { IBooking } from "@/types/Booking";
 import prisma from "@/utils/db";
+import { generateRandomNumber } from "@/utils/GenerateRandomKey";
 import { wait } from "@/utils/wait";
 
 export const CreateBookingAction = async ({
@@ -60,6 +61,7 @@ export const CreateBookingAction = async ({
         guests: validating.data.guests,
         roomsId: existingRoom.id as string,
         userId: existingUser.id,
+        bookingCode: generateRandomNumber(),
       },
     });
     return { success: "Your booking created!" };
