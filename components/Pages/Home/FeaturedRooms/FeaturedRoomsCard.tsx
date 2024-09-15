@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import Link from "next/link";
-import { RoomsDataType } from "@/types/Rooms";
+import { Booking, RoomsDataType } from "@/types/Rooms";
 import GallerySlider from "./GellerySlider";
 import Badge from "@/components/shared/Badge";
 import ButtonLikeIcon from "@/components/shared/Button/ButtonLikeIcon";
@@ -9,7 +9,7 @@ import StartRating from "./StartRating";
 
 export interface FeaturedRoomsCardProps {
   className?: string;
-  data?: RoomsDataType;
+  data?: Booking[];
   size?: "default" | "small";
 }
 const FeaturedRoomsCard: FC<FeaturedRoomsCardProps> = ({
