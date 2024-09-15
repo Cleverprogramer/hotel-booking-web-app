@@ -14,8 +14,8 @@ export const DashboardNavItems = [
   },
   {
     id: GenUuid(),
-    href: "/dashboard/acount/savelist",
-    name: "Account Savelists",
+    href: "/dashboard/acount/bookings",
+    name: "Account Booking",
   },
   {
     id: GenUuid(),
