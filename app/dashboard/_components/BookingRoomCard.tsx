@@ -1,18 +1,18 @@
 import React, { FC } from "react";
 import Link from "next/link";
 import { Booking, RoomsDataType } from "@/types/Rooms";
-import GallerySlider from "./GellerySlider";
 import Badge from "@/components/shared/Badge";
 import ButtonLikeIcon from "@/components/shared/Button/ButtonLikeIcon";
-import SaleOffBadge from "./SaleOfBadge";
-import StartRating from "./StartRating";
+import GallerySlider from "@/components/Pages/Home/FeaturedRooms/GellerySlider";
+import SaleOffBadge from "@/components/Pages/Home/FeaturedRooms/SaleOfBadge";
+import StartRating from "@/components/Pages/Home/FeaturedRooms/StartRating";
 
-export interface FeaturedRoomsCardProps {
+export interface BookingRoomsCardProps {
   className?: string;
-  data?: RoomsDataType;
+  data?: Booking;
   size?: "default" | "small";
 }
-const FeaturedRoomsCard: FC<FeaturedRoomsCardProps> = ({
+const BookingRoomsCard: FC<BookingRoomsCardProps> = ({
   size = "default",
   className = "",
   data,
@@ -23,7 +23,7 @@ const FeaturedRoomsCard: FC<FeaturedRoomsCardProps> = ({
         <GallerySlider
           uniqueID={`StayCard_${data?.id}`}
           ratioClass="aspect-w-4 aspect-h-3 "
-          galleryImgs={data?.galleryImages as []}
+          galleryImgs={data?.room.galleryImages as []}
           href={`/rooms/${data?.id}`}
           galleryClass={size === "default" ? undefined : ""}
         />
@@ -49,14 +49,14 @@ const FeaturedRoomsCard: FC<FeaturedRoomsCardProps> = ({
             <div className="flex items-center space-x-2">
               <i className=" las la-bed text-2xl"></i>
               <span className="hidden sm:inline-block">
-                {data?.bedrooms} beds
+                {data?.room?.bedrooms} beds
               </span>
             </div>
             <span>·</span>
             <div className="flex items-center space-x-3">
               <i className=" las la-bath text-2xl"></i>
               <span className=" ">
-                {data?.baths}{" "}
+                {data?.room?.baths}{" "}
                 <span className="hidden sm:inline-block">baths</span>
               </span>
             </div>
@@ -65,18 +65,18 @@ const FeaturedRoomsCard: FC<FeaturedRoomsCardProps> = ({
               <i className=" las la-expand-arrows-alt text-11"></i>
               <span className=" ">
                 <span className="hidden sm:inline-block">
-                  {data?.sizeInMeter}m2
+                  {data?.room?.sizeInMeter}m2
                 </span>
               </span>
             </div>
           </span>
           <div className="flex items-center space-x-2">
-            {true && <Badge name={data?.RoomCategory?.name} color="green" />}
+            {true && <Badge name color="green" />}
             <h2
               className={`font-semibold capitalize text-neutral-900 dark:text-white ${
                 size === "default" ? "text-base" : "text-base"
               }`}>
-              <span className="line-clamp-1">{data?.name}</span>
+              <span className="line-clamp-1">{data?.room.name}</span>
             </h2>
           </div>
         </div>
@@ -91,7 +91,7 @@ const FeaturedRoomsCard: FC<FeaturedRoomsCardProps> = ({
               </span>
             )}
           </span>
-          {!!data?.reviews && <StartRating point={data.reviews} />}
+          {!!data?.room?.reviews && <StartRating point={data?.room?.reviews} />}
         </div>
       </div>
     );
@@ -105,4 +105,4 @@ const FeaturedRoomsCard: FC<FeaturedRoomsCardProps> = ({
   );
 };
 
-export default FeaturedRoomsCard;
+export default BookingRoomsCard;

@@ -23,22 +23,7 @@ export interface RoomsDataType {
   roomCategoryId: string;
 }
 
-export type Room = {
-  id: string;
-  name: string;
-  desc: string;
-  stayInfo: string;
-  featuredImage: string;
-  galleryImages: string[];
-  price: number;
-  bedrooms: number;
-  baths: number;
-  guests: number;
-  sizeInMeter: number;
-  saleOff: string | null;
-  reviews: number;
-  roomCategoryId: string;
-};
+export type Room = {};
 
 export type Booking = {
   id: string;
@@ -50,7 +35,23 @@ export type Booking = {
   bookingCode: string;
   roomsId: string;
   userId: string;
+  saleOff: string;
   createdAt: Date;
   updatedAt: Date;
-  room: Room;
+  room: {
+    id: string;
+    name: string;
+    desc: string;
+    stayInfo: string;
+    featuredImage: string;
+    galleryImages: string[];
+    price: number;
+    bedrooms: number;
+    baths: number;
+    guests: number;
+    sizeInMeter: number;
+    saleOff: string | null;
+    reviews: number;
+    roomCategoryId: string;
+  };
 };
